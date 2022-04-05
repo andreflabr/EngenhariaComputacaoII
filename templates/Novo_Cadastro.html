@@ -32,6 +32,89 @@
     ></script>
   </head>
   <body>
-      
+    <div class="container col-md-6" id="form-container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Faça seu cadastro</h3>
+          <form class="form-signin" method="post" action="/autenticar">
+            <span id="reauth-email" class="reauth-email"></span>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Digite seu nome"
+                required
+                autofocus
+              />
+              <label for="name" class="form-label">Digite seu nome</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                class="form-control"
+                placeholder="Digite seu sobrenome"
+                required
+              />
+              <label for="lastname" class="form-label"
+                >Digite seu sobrenome</label
+              >
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Digite seu email"
+              />
+              <label for="email" class="form-label">Digite seu email</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Digite sua senha"
+              />
+              <label for="password" class="form-label">Digite sua senha</label>
+            </div>
+
+            <button
+              class="btn btn-lg btn-primary btn-block btn-signin"
+              type="submit"
+            >
+              Cadastrar
+            </button>
+
+            <!--<div class="col-12" id="link-container">
+              <a class="link-prumary" href="{{url_for('login')}}"
+                >Eu já tenho uma conta</a
+              >
+            </div>-->
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-12">
+              <img
+                id="profile-img"
+                class="profile-img-card"
+                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+              />
+            </div>
+            <div class="col-12" id="link-container">
+              <a class="link-prumary" href="{{url_for('login')}}"
+                >Eu já tenho uma conta</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

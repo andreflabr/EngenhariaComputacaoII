@@ -24,6 +24,11 @@ def autenticar():
         flash('Não logado, tente novamente')
         return render_template('/login.html')    
 
+@app.route('/Novo_Cadastro')
+def NovoCadastro():
+    return render_template('Novo_Cadastro.html')
+
+
 @app.route('/logout')
 def logout():
     session['usuario_logado'] = None
