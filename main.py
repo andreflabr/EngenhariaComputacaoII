@@ -7,7 +7,7 @@ app.secret_key = 'engenharia'
 def index():
     return render_template('Financa_Pessoal.html')
 
-'''
+
 
 #login 
 @app.route('/login')
@@ -36,7 +36,7 @@ def logout():
     return redirect('/login')
 
 
-'''
+
 
 
 
