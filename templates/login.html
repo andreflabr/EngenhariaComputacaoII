@@ -32,6 +32,20 @@
     ></script>
   </head>
   <body>
+    <input type="checkbox" id="chec" />
+    <label for="chec">
+      <i class="bi bi-list"></i>
+    </label>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index')}}">HOME</a></li>
+        <li><a href="{{url_for('login')}}">LOGIN</a></li>
+        <li><a href="#">teste3</a></li>
+        <li><a href="#">teste4</a></li>
+        <li><a href="#">teste5</a></li>
+      </ul>
+    </nav>
+
     <div class="container">
       <div class="card card-container">
         <h3>Faça seu login</h3>
@@ -83,8 +97,8 @@
         </form>
         <!-- /form -->
 
-        <a href="#" class="forgot-password"> Esqueci minha senha. </a>
-        <a href="{{url_for('NovoCadastro')}}" id="link1">Não possuo cadastro</a>
+        <a href="#" class="forgot-password" id="sombra2"> Esqueci minha senha. </a>
+        <a href="{{url_for('NovoCadastro')}}" id="sombra3">Não possuo cadastro</a>
       </div>
       <!-- /card-container -->
     </div>

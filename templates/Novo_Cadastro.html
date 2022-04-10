@@ -32,6 +32,19 @@
     ></script>
   </head>
   <body>
+    <input type="checkbox" id="chec" class="barra" />
+    <label for="chec" class="barra">
+      <i class="bi bi-list"></i>
+    </label>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="barra">HOME</a></li>
+        <li><a href="{{url_for('login')}}" class="barra">LOGIN</a></li>
+        <li><a href="#" class="barra">teste3</a></li>
+        <li><a href="#" class="barra">teste4</a></li>
+        <li><a href="#" class="barra">teste5</a></li>
+      </ul>
+    </nav>
     <div class="container col-md-6" id="form-container">
       <div class="row">
         <div class="col-md-6">
@@ -108,7 +121,7 @@
               />
             </div>
             <div class="col-12" id="link-container">
-              <a class="link-prumary" href="{{url_for('login')}}"
+              <a class="link-primary" href="{{url_for('login')}}" id="sombra"
                 >Eu já tenho uma conta</a
               >
             </div>

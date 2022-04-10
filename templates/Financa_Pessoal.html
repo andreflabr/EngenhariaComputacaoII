@@ -16,7 +16,7 @@
     <!--<link rel="stylesheet" href="static/style.css" />-->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='estilo_pg_principal.css') }}"
+      href="{{ url_for('static', filename='style.css') }}"
     />
 
     <link
@@ -32,18 +32,18 @@
     ></script>
   </head>
   <body>
-    <input type="checkbox" id="chec">
+    <input type="checkbox" id="chec" />
     <label for="chec">
-        <i class="bi bi-list"></i>
+      <i class="bi bi-list"></i>
     </label>
     <nav>
-        <ul>
-          <li><a href="Financa_Pessoal.html">HOME</a></li>
-          <li><a href="login.html">LOGIN</a></li>
-          <li><a href="#">teste3</a></li>
-          <li><a href="#">teste4</a></li>
-          <li><a href="#">teste5</a></li>
-        </ul>
+      <ul>
+        <li><a href="{{ url_for('index')}}">HOME</a></li>
+        <li><a href="{{url_for('login')}}">LOGIN</a></li>
+        <li><a href="#">teste3</a></li>
+        <li><a href="#">teste4</a></li>
+        <li><a href="#">teste5</a></li>
+      </ul>
     </nav>
   </body>
 </html>

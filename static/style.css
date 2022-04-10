@@ -1,6 +1,7 @@
 body,
 html {
   height: 100%;
+  font-family: "arial";
   background-repeat: no-repeat;
   background-image: linear-gradient(#318bff, #87ceeb);
 }
@@ -152,11 +153,7 @@ html {
   color: rgb(104, 145, 162);
   position: relative;
 }
-#link1:hover,
-#link1:active,
-#link1:focus {
-  color: rgb(12, 97, 33);
-}
+
 /*--------------------------------*/
 
 /*Novo Cadastro*/
@@ -206,4 +203,73 @@ html {
 #link-container {
   text-align: center;
   padding-top: 50px;
+}
+
+#sombra:hover,
+#sombra2:hover,
+#sombra3:hover {
+  background-color: #fff;
+}
+
+#sombra3:hover,
+#sombra3:active,
+#sombra3:focus {
+  color: rgb(12, 97, 33);
+}
+#sombra3 {
+  text-decoration: none;
+  color: rgb(104, 145, 162);
+}
+/*página principal*/
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  list-style: none;
+}
+
+.bi-list {
+  font-size: 40px;
+  margin: 20px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+nav {
+  background-color: #252525;
+  width: 350px;
+  left: -350px;
+  height: 100%;
+  position: absolute;
+  transition: all 0.5s;
+}
+
+input[type="checkbox"]:checked ~ nav {
+  /*Quando o checkbox for acionado, ele vai fazer um evento no conteudo, no elemento nav*/
+  transform: translateX(350px);
+}
+
+ul {
+  top: 70px;
+  position: absolute;
+  width: 100%;
+}
+
+a {
+  display: block;
+  padding: 20px 5px;
+  color: #fff;
+}
+a:hover {
+  background-color: rgb(12, 97, 33);
+}
+
+label {
+  padding: 15px;
+  position: absolute;
+  z-index: 1; /*faz com que o elemento fique na frente do outro*/
 }
