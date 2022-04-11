@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, session
+from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
 
 app = Flask(__name__)
 app.secret_key = 'engenharia'
@@ -36,6 +36,10 @@ def logout():
     return redirect('/login')
 
 
+# Rota para inserir imagens nos html
+@app.route('/img/<nome_arquivo>')
+def imagem(nome_arquivo):
+    return send_from_directory('img', nome_arquivo)
 
 
 
