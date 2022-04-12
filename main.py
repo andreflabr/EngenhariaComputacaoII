@@ -1,5 +1,12 @@
 from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
 
+
+
+
+
+
+
+
 app = Flask(__name__)
 app.secret_key = 'engenharia'
 
