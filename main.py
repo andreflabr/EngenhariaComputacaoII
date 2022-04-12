@@ -1,17 +1,26 @@
+from flaskext.mysql import MySQL
 from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
 
 
-
-
-
-
-
-
 app = Flask(__name__)
+
+mysql = MySQL()
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'mf'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
+conn = mysql.connect()
+cursor = conn.cursor()
+
+
 app.secret_key = 'engenharia'
 
 @app.route('/')
 def index():
+    cursor.execute('select * from cliente')
+    data = cursor.fetchone()
+    print(data)
     return render_template('Financa_Pessoal.html')
 
 

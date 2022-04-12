@@ -241,9 +241,9 @@ input[type="checkbox"] {
 }
 
 nav {
-  background-color: #252525;
+  background-color: rgb(88, 169, 246);
   width: 350px;
-  left: -350px;
+ /* left: -350px;*/
   height: 100%;
   position: absolute;
   transition: all 0.5s;
@@ -266,7 +266,7 @@ a {
   color: #fff;
 }
 a:hover {
-  background-color: rgb(12, 97, 33);
+  background-color: #fff;
 }
 
 label {
@@ -284,7 +284,7 @@ label {
 }
 
 .container .header {
-  position: fixed;
+  position:absolute;
   top: 0;
   right: 0;
   width: 77vw;
@@ -297,7 +297,7 @@ label {
 }
 
 .container .header .nav {
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
