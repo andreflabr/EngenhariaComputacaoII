@@ -242,7 +242,7 @@ input[type="checkbox"] {
 nav {
   background-color: #252525;
   width: 350px;
-  left: -350px;
+/*  left: -350px;*/
   height: 100%;
   position: absolute;
   transition: all 0.5s;
@@ -279,7 +279,7 @@ label {
   right: 0;
   width: 77vw;
   height: 100vh;
-  background: #f1f1f1;
+  
 }
 
 .container .header {
@@ -323,7 +323,7 @@ label {
 }
 
 .container .header .nav .search button .bi-search {
-  font-size: 40px;
+  font-size: 30px;
   width: 30px;
   height: 50px;
 }
@@ -342,7 +342,7 @@ label {
 }
 .container .content .cards .card {
   width: 250px;
-  height: 150px;
+  height: 300px;
   background: white;
   margin: 20px 10px;
   display: flex;
