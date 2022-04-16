@@ -46,17 +46,19 @@ def login():
 #------------------------------------------------------------------------------
 @app.route('/autenticar', methods=['POST',])
 def autenticar():
-    if 'mestra' == request.form['senha']:
+    usuario=usuario_dao.busca_por_id(request.form['usuario'])
+    if usuario: 
+     if 'usuario._senha' == request.form['senha']:
         session['usuario_logado']=request.form['usuario']
         flash(request.form['usuario'] + 'logado com sucesso!')
         proxima_pagina = request.form['proxima']
-        if proxima_pagina == '':
+        if proxima_pagina == 'None':
             return redirect('/')
         else:    
             return redirect('/{}'.format(proxima_pagina))
     else:
         flash('Não logado, tente novamente')
-        return render_template('/login.html')    
+        return render_template('/login')    
 #-------------------------------------------------------------------
 
 #REGISTRO DE USUÁRIO

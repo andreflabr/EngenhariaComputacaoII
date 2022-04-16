@@ -32,8 +32,6 @@
     ></script>
   </head>
   <body>
-    
-
     <div class="container">
       <div class="card card-container">
         <h3>Faça seu login</h3>
@@ -53,7 +51,7 @@
         {% endif %} {% endwith %}
 
         <form class="form-signin" method="post" action="/autenticar">
-         <input type="hidden" name="proxima" value="{{proxima}}"> >
+          <input type="hidden" name="proxima" value="{{proxima}}" /> >
           <span id="reauth-email" class="reauth-email"></span>
           <input
             type="email"
@@ -86,8 +84,10 @@
         </form>
         <!-- /form -->
 
-        <a href="#" class="forgot-password" id="sombra2"> Esqueci minha senha. </a>
-        <a href="{{url_for('NovoCadastro')}}" id="sombra3">Não possuo cadastro</a>
+        <a href="#" class="forgot-password" id="sombra2">
+          Esqueci minha senha.
+        </a>
+        <a href="{{url_for('registro')}}" id="sombra3">Não possuo cadastro</a>
       </div>
       <!-- /card-container -->
     </div>
