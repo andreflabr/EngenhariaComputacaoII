@@ -67,6 +67,7 @@ def registro():
     proxima2= request.args.get('proxima2')
     return render_template('Novo_Cadastro.html',proxima2=proxima2)
 
+#Crud - create do usuario
 @app.route('/salvarUsuario', methods=['POST',])
 def salvarUsuario():
     nome = request.form['name']
