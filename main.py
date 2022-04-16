@@ -1,20 +1,26 @@
-from flaskext.mysql import MySQL
+#from flaskext.mysql import MySQL
 from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
 
+from models import Usuario
+from dao import UsuarioDao
+from flask_mysqldb import  MySQL
 
 app = Flask(__name__)
 
-mysql = MySQL()
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = 'mf'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
-conn = mysql.connect()
-cursor = conn.cursor()
+
+
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'mf'
+app.config['MYSQL_PORT'] = 3306
+db = MySQL(app)
+usuario_dao = UsuarioDao(db)
 
 
 app.secret_key = 'engenharia'
+
+
 
 @app.route('/')
 def index():
@@ -28,23 +34,51 @@ def index():
 #login 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    proxima = request.args.get('proxima')
+    if proxima == None:
+        proxima=''
+    return render_template('login.html',proxima=proxima)
 
+
+#código pra verificar se estar logado
+#if 'usuario_logado' not in session or session['usuario_logado']==None:
+#    return redirect('/login?proxima=index')
+
+
+#------------------------------------------------------------------------------
 @app.route('/autenticar', methods=['POST',])
 def autenticar():
     if 'mestra' == request.form['senha']:
         session['usuario_logado']=request.form['usuario']
         flash(request.form['usuario'] + 'logado com sucesso!')
-        return redirect('/')
+        proxima_pagina = request.form['proxima']
+        if proxima_pagina == '':
+            return redirect('/')
+        else:    
+            return redirect('/{}'.format(proxima_pagina))
     else:
         flash('Não logado, tente novamente')
         return render_template('/login.html')    
+#-------------------------------------------------------------------
 
-@app.route('/Novo_Cadastro')
-def NovoCadastro():
-    return render_template('Novo_Cadastro.html')
+#REGISTRO DE USUÁRIO
+@app.route('/registro')
+def registro():
+    proxima2= request.args.get('proxima2')
+    return render_template('Novo_Cadastro.html',proxima2=proxima2)
 
+@app.route('/salvarUsuario', methods=['POST',])
+def salvarUsuario():
+    nome = request.form['name']
+    senha = request.form['password']
+    email = request.form['email']
+    cpf = request.form['cpf']
 
+    cadastro = Usuario(nome,senha,email,cpf)
+
+return redirect(/login)
+
+#-------------------------------------------------------------------
 @app.route('/logout')
 def logout():
     session['usuario_logado'] = None

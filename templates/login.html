@@ -53,6 +53,7 @@
         {% endif %} {% endwith %}
 
         <form class="form-signin" method="post" action="/autenticar">
+         <input type="hidden" name="proxima" value="{{proxima}}"> >
           <span id="reauth-email" class="reauth-email"></span>
           <input
             type="email"
