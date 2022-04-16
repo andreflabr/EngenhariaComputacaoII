@@ -24,9 +24,7 @@ app.secret_key = 'engenharia'
 
 @app.route('/')
 def index():
-    cursor.execute('select * from cliente')
-    data = cursor.fetchone()
-    print(data)
+    
     return render_template('Financa_Pessoal.html')
 
 
@@ -75,8 +73,8 @@ def salvarUsuario():
     cpf = request.form['cpf']
 
     cadastro = Usuario(nome,senha,email,cpf)
+    return redirect('/login')
 
-return redirect(/login)
 
 #-------------------------------------------------------------------
 @app.route('/logout')
