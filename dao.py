@@ -9,7 +9,7 @@ SQL_BUSCA_POR_ID ='SELECT id,nome,email,cpf from cliente where email=%s'
 
 
 def traduz_usuario(tupla):
-    return Usuario(tupla[0],tupla[3],tupla[2])
+    return Usuario(tupla[0],tupla[2],tupla[3])
 
 class UsuarioDao:
     #Busca por id
@@ -19,6 +19,9 @@ class UsuarioDao:
             dados = cursor.fetchone()
             cliente = traduz_usuario(dados) if dados else None
             return cliente   
+    
+    def traduz_usuario(tupla):
+        return Usuario(tupla[0], tupla[1], tupla[2])
 
     def __init__(self,db):
         self.__db=db
