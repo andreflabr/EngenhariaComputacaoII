@@ -1,6 +1,6 @@
 from models import Usuario
 
-SQL_CRIA_CLIENTE = 'INSERT into cliente (id,nome,senha,email,cpf) values (%s,%s,%s,%s,%s)'
+SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,senha,email,cpf) values (%s,%s,%s,%s)'
 SQL_DELETA_CLIENTE = 'DELETE from cliente where id=%s'
 SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s, senha=%s, email=%s, cpf=%s where id=%s '
 SQL_USUARIO_POR_ID = 'SELECT id,nome,senha,email,cpf from cliente where id=%s '
@@ -8,9 +8,10 @@ SQL_BUSCA_CLIENTE = 'SELECT id,nome,senha,email,cpf from cliente where email=%s 
 SQL_BUSCA_POR_ID ='SELECT id,nome,email,cpf from cliente where email=%s'
 
 
-def traduz_usuario(tupla):
-    return Usuario(tupla[0],tupla[2],tupla[3])
 
+def traduz_usuario(tupla):
+    return Usuario(tupla[0], tupla[1], tupla[2])
+    
 class UsuarioDao:
     #Busca por id
     def busca_por_id(self,id):
@@ -19,9 +20,6 @@ class UsuarioDao:
             dados = cursor.fetchone()
             cliente = traduz_usuario(dados) if dados else None
             return cliente   
-    
-    def traduz_usuario(tupla):
-        return Usuario(tupla[0], tupla[1], tupla[2])
 
     def __init__(self,db):
         self.__db=db

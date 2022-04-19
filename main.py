@@ -1,6 +1,7 @@
 #from flaskext.mysql import MySQL
 from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
 
+
 from models import Usuario
 from dao import UsuarioDao
 from flask_mysqldb import  MySQL
@@ -16,6 +17,8 @@ app.config['MYSQL_DB'] = 'mf'
 app.config['MYSQL_PORT'] = 3306
 db = MySQL(app)
 usuario_dao = UsuarioDao(db)
+
+
 
 
 app.secret_key = 'engenharia'
