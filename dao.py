@@ -10,7 +10,7 @@ SQL_BUSCA_POR_ID ='SELECT id,nome,email,cpf from cliente where email=%s'
 
 
 def traduz_usuario(tupla):
-    return Usuario(tupla[0], tupla[1], tupla[2])
+    return Usuario(tupla[1], tupla[2])
     
 class UsuarioDao:
     #Busca por id

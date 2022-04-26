@@ -51,7 +51,7 @@ def login():
 def autenticar():
     usuario=usuario_dao.busca_por_id(request.form['usuario'])
     if usuario: 
-     if 'usuario._senha' == request.form['senha']:
+     if usuario._senha == request.form['senha']:
         session['usuario_logado']=request.form['usuario']
         flash(request.form['usuario'] + 'logado com sucesso!')
         proxima_pagina = request.form['proxima']
@@ -59,9 +59,9 @@ def autenticar():
             return redirect('/')
         else:    
             return redirect('/{}'.format(proxima_pagina))
-    else:
-        flash('Não logado, tente novamente')
-        return render_template('/login')    
+    
+    flash('Não logado, tente novamente')
+    return render_template('/login')    
 #-------------------------------------------------------------------
 
 #REGISTRO DE USUÁRIO
@@ -94,8 +94,15 @@ def logout():
 @app.route('/img/<nome_arquivo>')
 def imagem(nome_arquivo):
     return send_from_directory('img', nome_arquivo)
+#------------------------------------------------------------------
+@app.route('/transacoes')
+def transacoes():
+    return render_template('transacoes.html')
 
-
+#---------------------------------------------------------------
+@app.route('/poupanca')
+def poupanca():
+    return render_template('poupanca.html')
 
 
 if __name__ == '__main__':

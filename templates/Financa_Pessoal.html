@@ -33,29 +33,19 @@
   </head>
   <body>
    <!-- <input type="checkbox" id="chec" />-->
-    <label for="chec">
-     <!-- <i class="bi bi-list"></i>-->
-    </label>
+    
     <nav>
+      
       <ul>
-        <li><a href="{{ url_for('index')}}">HOME</a></li>
+        <li><a href="{{ url_for('index')}}">Dashboad</a></li>
         <li><a href="{{url_for('login')}}">LOGIN</a></li>
-        <li><a href="#">teste3</a></li>
-        <li><a href="#">teste4</a></li>
+        <li><a href="{{url_for('transacoes')}}">Transações</a></li>
+        <li><a href="{{url_for('poupanca')}}">Poupanca</a></li>
         <li><a href="#">teste5</a></li>
       </ul>
     </nav>
     <div>
-      <!--<nav class="x">
-        <ul>
-          <li><a href="{{ url_for('index')}}">HOME</a></li>
-          <li><a href="{{url_for('login')}}">LOGIN</a></li>
-          <li><a href="#">teste3</a></li>
-          <li><a href="#">teste4</a></li>
-          <li><a href="#">teste5</a></li>
-        </ul>
-      </nav>
-    </div>-->
+      
 
     <div class="container">
       <div class="header">
@@ -70,8 +60,7 @@
         <div class="cards">
           <div class="card">
             <div class="box">
-              <h2>1</h2>
-              <h3>Renda</h3>
+              <h2>Total</h2>
             </div>
             <div class="icon-design">
               <img src="img/coin.svg" />
@@ -80,8 +69,8 @@
 
           <div class="card">
             <div class="box">
-              <h2>2</h2>
-              <h3>Despesas</h3>
+              <h2>Entradas</h2>
+             
             </div>
             <div class="icon-design">
               <img src="img/wallet2.svg" />
@@ -90,12 +79,15 @@
 
           <div class="card">
             <div class="box">
-              <h2>3</h2>
-              <h3>Extrato</h3>
+              <h2>Saidas</h2>
+              
             </div>
             <div class="icon-design">
               <img src="img/card-heading.svg" />
             </div>
+          </div>
+          <div class="card col-md-12">
+            
           </div>
 
           
