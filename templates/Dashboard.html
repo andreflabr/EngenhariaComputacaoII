@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finanças Pessoais</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dashboard.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="side-menu">
+      <div class="brand-name">
+        <h1>Finanças S.A</h1>
+      </div>
+      <ul>
+        <li>
+          <a href="{{ url_for('index')}}"
+            ><img src="img/dashboard (2).png" />&nbsp;Inicio</a
+          >
+        </li>
+        <li><a href="{{url_for('transacoes')}}">&nbsp;Transações</a></li>
+        <li><a href="{{url_for('poupanca')}}">&nbsp;Poupança</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <div class="nav">
+          <div class="search">
+            <input type="text" placeholder="pesquisar..." />
+            <button type="submit">
+              <img src="img/search.png" alt="Pesquisar" />
+            </button>
+          </div>
+
+          <div class="user">
+            <img src="img/user.png" alt="Usuário" />
+            <!--<img src="img/notifications.png" />-->
+            <div class="img-case">
+              <a href="{{url_for('login')}}" class="btn"
+                ><span>Entrar</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="cards">
+          <div class="card">
+            <div class="box">
+              <h1 class="preto">214944</h1>
+              <h3>Poupança</h3>
+            </div>
+            <div class="icon-case">
+              <img src="students.png" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="box">
+              <h1 class="preto">214900</h1>
+              <h3>Transações</h3>
+            </div>
+            <div class="icon-case">
+              <img src="students.png" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="box">
+              <h1 class="preto">2149</h1>
+              <h3>estudantes</h3>
+            </div>
+            <div class="icon-case">
+              <img src="students.png" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="box">
+              <h1 class="preto">2149</h1>
+              <h3>estudantes</h3>
+            </div>
+            <div class="icon-case">
+              <img src="students.png" />
+            </div>
+          </div>
+        </div>
+        <div class="content-2">
+          <div class="recent-payments">
+            <div class="title">
+              <h2 class="preto">Poupança</h2>
+              <a href="#" class="btn">View All</a>
+            </div>
+            <table>
+              <tr>
+                <th>teste</th>
+                <th>teste</th>
+                <th>teste</th>
+                <th>Ação</th>
+              </tr>
+              <tr>
+                <td>xxx</td>
+                <td>xxx</td>
+                <td>xxx</td>
+                <td><a href="#" class="btn">Excluir</a></td>
+              </tr>
+            </table>
+          </div>
+          <div class="new-students">
+            <div class="title">
+              <h2 class="preto">Últimas transações</h2>
+              <a href="#" class="btn">View All</a>
+            </div>
+            <table>
+              <tr>
+                <th>111</th>
+                <th>111</th>
+                <th>111</th>
+              </tr>
+              <tr>
+                <td>sefdsafdased</td>
+                <td>sefdsafdased</td>
+                <td>sefdsafdased</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

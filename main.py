@@ -28,7 +28,7 @@ app.secret_key = 'engenharia'
 @app.route('/')
 def index():
     
-    return render_template('Financa_Pessoal.html')
+    return render_template('Dashboard.html')
 
 
 
