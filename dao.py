@@ -4,14 +4,14 @@ SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,sobrenome,usuario,email,senha) val
 SQL_DELETA_CLIENTE = 'DELETE from cliente where id=%s'
 SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s,sobrenome=%s,usuario=%s,email=%s, senha=%s where id=%s '
 
-SQL_USUARIO_POR_ID = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where email=%s '
+SQL_USUARIO_POR_ID = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
 SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
 SQL_BUSCA_POR_ID ='SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s'
 
 
 
 def traduz_usuario(tupla):
-    return Usuario(tupla[1], tupla[5],tupla[6])
+    return Usuario(tupla[0],tupla[4],tupla[5])
     
 class UsuarioDao:
     #Busca por id

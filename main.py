@@ -50,14 +50,14 @@ def login():
 def autenticar():
     usuario=usuario_dao.busca_por_id(request.form['usuario'])
     if usuario: 
-     if usuario._senha == request.form['senha']:
-        session['usuario_logado']=request.form['usuario']
-        flash(request.form['usuario'] + 'logado com sucesso!')
-        proxima_pagina = request.form['proxima']
-        if proxima_pagina == '':
-            return redirect('/')
-        else:    
-            return redirect('/{}'.format(proxima_pagina))
+        if usuario._senha == request.form['senha']:
+            session['usuario_logado']=request.form['usuario']
+            flash(request.form['usuario'] + 'logado com sucesso!')
+            proxima_pagina = request.form['proxima']
+            if proxima_pagina == '':
+                return redirect('/')
+            else:    
+                return redirect('/{}'.format(proxima_pagina))
     
     flash('Não logado, tente novamente')
     return render_template('/login')    
