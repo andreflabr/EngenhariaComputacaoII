@@ -82,7 +82,7 @@ def salvarUsuario():
 
     cadastro = Usuario(nome,sobrenome,usuario,email,senha)
     
-    usuario_dao.salvar = (cadastro)
+    usuario_dao.salvar(cadastro)
     return redirect('/login')
 
 
