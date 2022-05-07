@@ -1,8 +1,11 @@
 
 class Usuario:
-    def __init__(self,nome,senha,email,id=None):
+    def __init__(self,nome,sobrenome,usuario,email,senha,id=None):
         self._id=id
         self._nome=nome
-        self._senha=senha
+        self._sobrenome=sobrenome
+        self._usuario=usuario
         self._email=email
+        self._senha=senha
+        
 

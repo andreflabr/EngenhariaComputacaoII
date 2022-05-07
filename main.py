@@ -74,11 +74,14 @@ def registro():
 @app.route('/salvarUsuario', methods=['POST',])
 def salvarUsuario():
     nome = request.form['name']
-    senha = request.form['password']
+    sobrenome = request.form['lastname']
+    usuario = request.form['username']
     email = request.form['email']
-    cpf = request.form['cpf']
+    senha = request.form['password']
+    
+    #cpf = request.form['cpf']
 
-    cadastro = Usuario(nome,senha,email,cpf)
+    cadastro = Usuario(nome,sobrenome,usuario,email,senha)
     return redirect('/login')
 
 

@@ -1,11 +1,12 @@
 from models import Usuario
 
-SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,senha,email,cpf) values (%s,%s,%s,%s)'
+SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,sobrenome,usuario,email,senha) values (%s,%s,%s,%s,%s)'
 SQL_DELETA_CLIENTE = 'DELETE from cliente where id=%s'
-SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s, senha=%s, email=%s, cpf=%s where id=%s '
-SQL_USUARIO_POR_ID = 'SELECT id,nome,senha,email,cpf from cliente where id=%s '
-SQL_BUSCA_CLIENTE = 'SELECT id,nome,senha,email,cpf from cliente where email=%s '
-SQL_BUSCA_POR_ID ='SELECT id,nome,email,cpf from cliente where email=%s'
+SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s,sobrenome=%s,usuario=%s,email=%s, senha=%s where id=%s '
+
+SQL_USUARIO_POR_ID = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
+SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
+SQL_BUSCA_POR_ID ='SELECT id,nome,sobrenome,usuario,email from cliente where id=%s'
 
 
 
@@ -28,9 +29,9 @@ class UsuarioDao:
             cursor = self.__db.connection.cursor()
 
             if(cliente._id):
-                cursor.execute(SQL_ATUALIZA_CLIENTE,(cliente._nome,cliente._senha,cliente._email, cliente._cpf,cliente._id))
+                cursor.execute(SQL_ATUALIZA_CLIENTE,(cliente._nome,cliente._sobrenome,cliente._usuario,cliente._email,cliente._senha, cliente._id))
             else:
-                cursor.execute(SQL_CRIA_CLIENTE,(cliente._nome,cliente._senha,cliente._email, cliente._cpf))
+                cursor.execute(SQL_CRIA_CLIENTE,(cliente._nome,cliente._sobrenome,cliente._usuario,cliente._email,cliente._senha))
                 cursor._id = cursor.lastrowid
 
                 self.__db.connection.commit()
