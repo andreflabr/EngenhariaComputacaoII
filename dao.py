@@ -1,6 +1,6 @@
 from models import Usuario
 
-SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,sobrenome,usuario,email,senha) values (%s,%s,%s,%s,%s)'
+SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,sobrenome,usuario,email,senha) values (%s, %s, %s, %s, %s)'
 SQL_DELETA_CLIENTE = 'DELETE from cliente where id=%s'
 SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s,sobrenome=%s,usuario=%s,email=%s, senha=%s where id=%s '
 

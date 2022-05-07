@@ -1,14 +1,13 @@
 #from flaskext.mysql import MySQL
 from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
 
-
-from models import Usuario
 from dao import UsuarioDao
 from flask_mysqldb import  MySQL
 
+from models import Usuario
+
 app = Flask(__name__)
-
-
+app.secret_key = 'engenharia'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -21,7 +20,7 @@ usuario_dao = UsuarioDao(db)
 
 
 
-app.secret_key = 'engenharia'
+
 
 
 
@@ -82,6 +81,8 @@ def salvarUsuario():
     #cpf = request.form['cpf']
 
     cadastro = Usuario(nome,sobrenome,usuario,email,senha)
+    print(cadastro)
+    usuario_dao.salvar = (cadastro)
     return redirect('/login')
 
 
