@@ -81,7 +81,7 @@ def salvarUsuario():
     #cpf = request.form['cpf']
 
     cadastro = Usuario(nome,sobrenome,usuario,email,senha)
-    print(cadastro)
+    
     usuario_dao.salvar = (cadastro)
     return redirect('/login')
 

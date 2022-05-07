@@ -25,7 +25,7 @@ class UsuarioDao:
     def __init__(self,db):
         self.__db=db
         #cria e atualiza usuario
-        def salvar(self,cliente):
+    def salvar(self,cliente):
             cursor = self.__db.connection.cursor()
 
             if(cliente._id):
@@ -35,11 +35,12 @@ class UsuarioDao:
                 cursor._id = cursor.lastrowid
 
                 self.__db.connection.commit()
-            return cliente    
-
-        #Deleta usuario
-        def deletar_usuario(self,id):
+            return cliente     
+    #Deleta usuario
+    def deletar_usuario(self,id):
             self.__db.connection.cursor().execute(SQL_DELETA_CLIENTE,(id,))
-            self.__db.connection.commit()   
+            self.__db.connection.commit()               
+
+           
         
           
