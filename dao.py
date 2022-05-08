@@ -4,9 +4,9 @@ SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,sobrenome,usuario,email,senha) val
 SQL_DELETA_CLIENTE = 'DELETE from cliente where id=%s'
 SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s,sobrenome=%s,usuario=%s,email=%s, senha=%s where id=%s '
 
-SQL_USUARIO_POR_ID = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
+SQL_USUARIO_POR_ID = 'SELECT idcliente,nome,sobrenome,usuario,email,senha from cliente where email=%s '
 SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
-SQL_BUSCA_POR_ID ='SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s'
+#SQL_BUSCA_POR_ID ='SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s'
 
 
 
@@ -16,11 +16,12 @@ def traduz_usuario(tupla):
 class UsuarioDao:
     #Busca por id
     def busca_por_id(self,email):
-            cursor = self.__db.connection.cursor()
-            cursor.execute(SQL_USUARIO_POR_ID,(email,))
-            dados = cursor.fetchone()
-            cliente = traduz_usuario(dados) if dados else None
-            return cliente   
+        cursor = self.__db.connection.cursor()
+        cursor.execute(SQL_USUARIO_POR_ID,(email))
+        dados = cursor.fetchone()
+        cliente = traduz_usuario(dados) if dados else None
+        return cliente 
+        #return None  
 
     def __init__(self,db):
         self.__db=db

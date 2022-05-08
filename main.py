@@ -47,7 +47,7 @@ def login():
 
 #------------------------------------------------------------------------------
 @app.route('/autenticar', methods=['POST',])
-def autenticar():
+def autenticar():    
     usuario=usuario_dao.busca_por_id(request.form['usuario'])
     if usuario: 
         if usuario._senha == request.form['senha']:
