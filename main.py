@@ -52,7 +52,7 @@ def autenticar():
     if usuario: 
         if usuario._senha == request.form['senha']:
             session['usuario_logado']=request.form['usuario']
-            flash(request.form['usuario'] + 'logado com sucesso!')
+            flash(request.form['usuario'] + ' logado com sucesso!')
             proxima_pagina = request.form['proxima']
             if proxima_pagina == '':
                 return redirect('/')

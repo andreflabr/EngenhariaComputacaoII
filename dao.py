@@ -10,18 +10,18 @@ SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente w
 
 
 
-def traduz_usuario(tupla):
-    return Usuario(tupla[0],tupla[4],tupla[5])
+def traduz_usuario(tupla):    
+    return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
     
 class UsuarioDao:
     #Busca por id
     def busca_por_id(self,email):
         cursor = self.__db.connection.cursor()
-        cursor.execute(SQL_USUARIO_POR_ID,(email))
+        cursor.execute(SQL_USUARIO_POR_ID,(email,))
         dados = cursor.fetchone()
         cliente = traduz_usuario(dados) if dados else None
-        return cliente 
-        #return None  
+        return cliente
+          
 
     def __init__(self,db):
         self.__db=db

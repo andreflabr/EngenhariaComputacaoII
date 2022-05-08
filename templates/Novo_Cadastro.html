@@ -16,7 +16,11 @@
     <!--<link rel="stylesheet" href="static/style.css" />-->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='novo-cadastro.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dashboard.css') }}"
     />
 
     <link
@@ -33,36 +37,33 @@
   </head>
 
   <body>
-    <!--  <input type="checkbox" id="chec" class="barra" />-->
-    <label for="chec" class="barra">
-      <!--<i class="bi bi-list"></i>-->
-    </label>
-    <nav>
+    <div class="side-menu">
+      <div class="brand-name">
+        <h1>Finanças S.A</h1>
+      </div>
       <ul>
         <li>
           <a href="{{ url_for('index')}}"
-            ><i class="bi bi-house-door-fill"></i>Dashboad</a
-          >
-        </li>
-        <li>
-          <a href="{{url_for('login')}}"
-            ><i class="bi bi-door-open-fill"></i>LOGIN</a
+            ><img src="img/house-door-fill.svg" />&nbsp;Inicio</a
           >
         </li>
         <li>
           <a href="{{url_for('transacoes')}}"
-            ><i class="bi bi-arrow-up"></i>Transações</a
+            ><img src="img/arrow-up(1).svg" />&nbsp;Transações</a
           >
         </li>
         <li>
           <a href="{{url_for('poupanca')}}"
-            ><i class="bi bi-cursor-fill"></i>Poupanca</a
+            ><img src="img/person-fill.svg" />&nbsp;Poupança</a
           >
         </li>
+        <li>
+          <a href="#"><img src="img/person-fill.svg" />&nbsp;Minha conta</a>
+        </li>
       </ul>
-    </nav>
+    </div>
 
-    <div class="container col-md-6" id="form-container">
+    <div class="container col-md-6 jx" id="form-container">
       <div class="row">
         <div class="col-md-6">
           <h3>Faça seu cadastro</h3>
@@ -138,6 +139,9 @@
             >
               Cadastrar
             </button>
+            <a class="btn btn-danger" href="{{url_for('login')}}" id="sombra"
+              >Eu já tenho uma conta</a
+            >
 
             <!--<div class="col-12" id="link-container">
               <a class="link-prumary" href="{{url_for('login')}}"
@@ -146,7 +150,7 @@
             </div>-->
           </form>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div class="row align-items-center">
             <div class="col-12">
               <img
@@ -161,7 +165,7 @@
               >
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </body>

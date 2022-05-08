@@ -23,9 +23,19 @@
             ><img src="img/house-door-fill.svg" />&nbsp;Inicio</a
           >
         </li>
-        <li><a href="{{url_for('transacoes')}}"><img src="img/arrow-up(1).svg" />&nbsp;Transações</a></li>
-        <li><a href="{{url_for('poupanca')}}"><img src="img/person-fill.svg" />&nbsp;Poupança</a></li>
-        <li><a href="#"><img src="img/person-fill.svg" />&nbsp;Minha conta</a></li>
+        <li>
+          <a href="{{url_for('transacoes')}}"
+            ><img src="img/arrow-up(1).svg" />&nbsp;Transações</a
+          >
+        </li>
+        <li>
+          <a href="{{url_for('poupanca')}}"
+            ><img src="img/person-fill.svg" />&nbsp;Poupança</a
+          >
+        </li>
+        <li>
+          <a href="#"><img src="img/person-fill.svg" />&nbsp;Minha conta</a>
+        </li>
       </ul>
     </div>
 
@@ -40,7 +50,6 @@
           </div>
 
           <div class="user">
-            <img src="img/user.png" alt="Usuário" />
             <!--<img src="img/notifications.png" />-->
             <div class="img-case">
               <a href="{{url_for('login')}}" class="btn"
@@ -50,6 +59,14 @@
           </div>
         </div>
       </div>
+
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul id="messages" class="list-unstyled">
+        {% for message in messages %}
+        <li class="alert alert-success">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
 
       <div class="content">
         <div class="cards">
