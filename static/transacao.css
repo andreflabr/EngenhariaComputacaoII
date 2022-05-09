@@ -20,6 +20,12 @@ body {
 .blue-text {
   color: #000;
 }
+#branco{
+  color:white;
+}
+#branco:hover{
+  color:#000;
+}
 
 .form-control-label {
   margin-bottom: 0;

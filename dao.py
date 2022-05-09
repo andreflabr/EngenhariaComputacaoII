@@ -6,8 +6,8 @@ SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s,sobrenome=%s,usuario=%s,email
 
 SQL_USUARIO_POR_ID = 'SELECT idcliente,nome,sobrenome,usuario,email,senha from cliente where email=%s '
 SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
-#SQL_BUSCA_POR_ID ='SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s'
 
+#SQL_CRIA_TRANSACAO = 'INSERT into transacao ()'
 
 
 def traduz_usuario(tupla):    

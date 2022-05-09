@@ -19,15 +19,11 @@ usuario_dao = UsuarioDao(db)
 
 
 
-
-
-
-
-
 @app.route('/')
 def index():
     
     return render_template('Dashboard.html')
+
 
 
 
