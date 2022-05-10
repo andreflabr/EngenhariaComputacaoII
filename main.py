@@ -19,7 +19,11 @@ usuario_dao = UsuarioDao(db)
 
 
 
-@app.route('/')
+
+
+
+
+@app.route('/index')
 def index():
     
     return render_template('Dashboard.html')
@@ -36,9 +40,7 @@ def login():
     return render_template('login.html',proxima=proxima)
 
 
-#código pra verificar se estar logado
-#if 'usuario_logado' not in session or session['usuario_logado']==None:
-#    return redirect('/login?proxima=index')
+
 
 
 #------------------------------------------------------------------------------
@@ -51,7 +53,7 @@ def autenticar():
             flash(request.form['usuario'] + ' logado com sucesso!')
             proxima_pagina = request.form['proxima']
             if proxima_pagina == '':
-                return redirect('/')
+                return redirect('/index')
             else:    
                 return redirect('/{}'.format(proxima_pagina))
     
@@ -68,6 +70,11 @@ def registro():
 #Crud - create do usuario
 @app.route('/salvarUsuario', methods=['POST',])
 def salvarUsuario():
+    # idcliente = request.form['username']
+    # nome = request.form['name']
+    # sobrenome = request.form['lastname']
+    # email = request.form['email']
+    # senha = request.form['password']
     nome = request.form['name']
     sobrenome = request.form['lastname']
     usuario = request.form['username']
@@ -86,7 +93,7 @@ def salvarUsuario():
 @app.route('/logout')
 def logout():
     session['usuario_logado'] = None
-    flash('Nenhum usuario logado')
+    flash("Nenhum usuario logado",'error')
     return redirect('/login')
 
 
@@ -96,7 +103,11 @@ def imagem(nome_arquivo):
     return send_from_directory('img', nome_arquivo)
 #------------------------------------------------------------------
 @app.route('/transacoes')
+#código pra verificar se estar logado
 def transacoes():
+    if 'usuario_logado' not in session or session['usuario_logado']==None:
+        return redirect('/login?proxima=index')
+    #flash('Transição feita com sucesso','sucesso')
     return render_template('transacoes.html')
 
 #---------------------------------------------------------------
