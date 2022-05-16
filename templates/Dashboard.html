@@ -17,6 +17,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="{{ url_for('static', filename='jquery-3.6.0.js') }}"></script>
+    <script src="{{ url_for('static', filename='teste.js') }}"></script>
 
     <!-- JavaScript Bundle with Popper -->
     <script
@@ -50,6 +52,11 @@
         <li>
           <a href="#"><img src="img/person-fill.svg" />&nbsp;Minha conta</a>
         </li>
+        <li>
+          <a href="{{url_for('logout')}}"
+            ><img src="img/person-fill.svg" />&nbsp;Sair</a
+          >
+        </li>
       </ul>
     </div>
 
@@ -65,7 +72,7 @@
 
           <div class="user">
             <!--<img src="img/notifications.png" />-->
-            <div class="img-case">
+            <div class="img-case" id="sair">
               <a href="{{url_for('login')}}" class="btn"
                 ><span>Entrar</span>
               </a>
@@ -74,20 +81,26 @@
         </div>
       </div>
 
-
       <div class="content">
-        
-      {% with messages = get_flashed_messages() %} 
-      {% if messages %}
-      <ul id="messages" class="list-unstyled">
-        {% for message in messages %}
-        <li class="alert alert-success alert-dismissible fade show" role="alert" >{{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-       {% endwith %}
+        {% with successo = get_flashed_messages(with_categories=true) %} {% if
+        successo %}
+        <ul id="messages" class="list-unstyled">
+          {% for message in successo %}
+          <li
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            {{ sucesso }}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
         <div class="cards">
           <div class="card">
             <div class="box">
