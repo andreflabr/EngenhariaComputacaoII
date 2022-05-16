@@ -106,3 +106,7 @@ html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.oculto {
+  display: none;
+}

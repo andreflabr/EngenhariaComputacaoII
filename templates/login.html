@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    
 
     <!-- CSS only -->
     <link
@@ -33,24 +32,26 @@
     ></script>
   </head>
   <body>
-
-    
     <div class="container">
-      
       <div class="card card-container">
-        {% with error = get_flashed_messages() %} 
-        {% if error %}
+        {% with error = get_flashed_messages() %} {% if error %}
         <ul id="error" class="list-unstyled">
-         
-          <li class="alert alert-success alert-dismissible fade show" role="alert" >{{error}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <li
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            {{error}}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
           </li>
-          
         </ul>
-        {% endif %}
-         {% endwith %}
+        {% endif %} {% endwith %}
         <h3>Faça seu login</h3>
-       
+
         <img
           id="profile-img"
           class="profile-img-card"
@@ -85,14 +86,49 @@
             </label>
           </div> -->
           <button
+            data-bs-toggle="modal"
             class="btn btn-lg btn-primary btn-block btn-signin"
             type="submit"
+            id="botao"
           >
             Entrar
           </button>
         </form>
         <!-- /form -->
-
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Seja Bem vindo
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">...</div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  aria-label="Close"
+                >
+                  Fechar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- <a href="#" class="forgot-password" id="sombra2">
           Esqueci minha senha.
         </a> -->
@@ -101,5 +137,14 @@
       <!-- /card-container -->
     </div>
     <!-- /container -->
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='jquery-3.6.0.js') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='teste.js') }}"
+    />
   </body>
 </html>

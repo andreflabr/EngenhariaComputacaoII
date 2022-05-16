@@ -23,7 +23,7 @@ usuario_dao = UsuarioDao(db)
 
 
 
-@app.route('/index')
+@app.route('/')
 def index():
     
     return render_template('Dashboard.html')
@@ -52,8 +52,8 @@ def autenticar():
             session['usuario_logado']=request.form['usuario']
             flash(request.form['usuario'] + ' logado com sucesso!')
             proxima_pagina = request.form['proxima']
-            if proxima_pagina == '':
-                return redirect('/index')
+            if proxima_pagina == 'None':
+                return redirect('/')
             else:    
                 return redirect('/{}'.format(proxima_pagina))
     
@@ -70,20 +70,19 @@ def registro():
 #Crud - create do usuario
 @app.route('/salvarUsuario', methods=['POST',])
 def salvarUsuario():
-    # idcliente = request.form['username']
-    # nome = request.form['name']
-    # sobrenome = request.form['lastname']
-    # email = request.form['email']
-    # senha = request.form['password']
+    
     nome = request.form['name']
     sobrenome = request.form['lastname']
-    usuario = request.form['username']
     email = request.form['email']
     senha = request.form['password']
+    # nome = request.form['name']
+    # sobrenome = request.form['lastname']
+    # usuario = request.form['username']
+    # email = request.form['email']
+    # senha = request.form['password']
     
-    #cpf = request.form['cpf']
 
-    cadastro = Usuario(nome,sobrenome,usuario,email,senha)
+    cadastro = Usuario(nome,sobrenome,email,senha)
     
     usuario_dao.salvar(cadastro)
     return redirect('/login')
@@ -113,7 +112,7 @@ def transacoes():
 #---------------------------------------------------------------
 @app.route('/poupanca')
 def poupanca():
-    return render_template('poupanca.html')
+    return render_template('poupanca.html',titulo = "Insira seu saldo")
 
 
 if __name__ == '__main__':
