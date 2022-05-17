@@ -50,7 +50,7 @@ def autenticar():
     if usuario: 
         if usuario._senha == request.form['senha']:
             session['usuario_logado']=request.form['usuario']
-       #     flash(request.form['usuario'] + ' logado com sucesso!')
+            flash(request.form['usuario'] + ' logado com sucesso!','sucesso')
             proxima_pagina = request.form['proxima']
             if proxima_pagina == 'None':
                 return redirect('/')
@@ -93,7 +93,7 @@ def salvarUsuario():
 def logout():
     session['usuario_logado'] = None
     
-    flash("Nenhum usuario logado",'error')
+    flash('Nenhum usuario logado','error')
     return redirect('/login')
 
 
@@ -107,7 +107,7 @@ def imagem(nome_arquivo):
 def transacoes():
     if 'usuario_logado' not in session or session['usuario_logado']==None:
         return redirect('/login?proxima=index')
-    flash('Transição feita com sucesso','sucesso')
+    #flash('Transação feita com sucesso','sucesso')
     return render_template('transacoes.html')
 
 #---------------------------------------------------------------
@@ -118,3 +118,9 @@ def poupanca():
 
 if __name__ == '__main__':
     app.run(debug=True)    
+ 
+
+ #--------------------------------------------------------
+#  @app.route('/despesas')
+#  def despesas():
+#      #return render_template('despesas.html', titulo = "Faça seu gerenciamento de despesas")

@@ -36,13 +36,14 @@
   <body>
     <div class="container">
       <div class="card card-container">
-        {% with error = get_flashed_messages() %} {% if error %}
+        {% with error = get_flashed_messages() %} 
+        {% if error %}
         <ul id="error" class="list-unstyled">
           <li
             class="alert alert-success alert-dismissible fade show"
             role="alert"
           >
-            {{error}}
+            {{ error }}
             <button
               type="button"
               class="btn-close"

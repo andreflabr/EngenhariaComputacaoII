@@ -40,23 +40,28 @@
         <h1>Finanças S.A</h1>
       </div>
       <ul>
-         <li>
+        <li>
           <a href="{{ url_for('index')}}"
             ><img src="img/house-door-fill.svg" />&nbsp;Inicio</a
           >
         </li>
         <li>
           <a href="{{url_for('transacoes')}}"
-            ><img src="img/arrow-up(1).svg" />&nbsp;Transações</a
+            ><img src="img/arrow-up (1).svg"  />&nbsp;Transações</a
           >
         </li>
         <li>
           <a href="{{url_for('poupanca')}}"
-            ><img src="img/person-fill.svg" />&nbsp;Poupança</a
+            ><img src="img/person-fill.svg" />&nbsp;Inserir Saldo</a
           >
         </li>
         <li>
           <a href="#"><img src="img/person-fill.svg" />&nbsp;Minha conta</a>
+        </li>
+        <li>
+          <a href="{{url_for('logout')}}"
+            ><img src="img/x-lg.svg" />&nbsp;Sair</a
+          >
         </li>
       </ul>
     </div>
@@ -73,15 +78,17 @@
                                  <label class="form-control-label px-3">Titulo<span class="text-danger"> *</span></label> 
                                  <input type="text" id="titulo"  placeholder="Titulo" > 
                             </div>
+
                             <div class="form-group col-sm-6 flex-column d-flex"> 
                                 <label class="form-control-label px-3">Quantia disponível<span class="text-danger"> *</span></label> 
                                 <input type="number" id="valor2"  placeholder="Digite um valor"> </div>
                         </div>
-                        <div class="row justify-content-between text-left">
+
+                        <!-- <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-12 flex-column d-flex"> 
                                 <label class="form-control-label px-3">Quantia total<span class="text-danger"> *</span></label> 
                                 <input type="number" id="qtotal" name="categoria" placeholder="Quantia total"> 
-                            </div>
+                            </div> -->
                                  
                             
                         </div>

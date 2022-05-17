@@ -41,12 +41,12 @@
         </li>
         <li>
           <a href="{{url_for('transacoes')}}"
-            ><img src="img/arrow-up(1).svg" />&nbsp;Transações</a
+            ><img src="img/arrow-up (1).svg"  />&nbsp;Transações</a
           >
         </li>
         <li>
           <a href="{{url_for('poupanca')}}"
-            ><img src="img/person-fill.svg" />&nbsp;Poupança</a
+            ><img src="img/person-fill.svg" />&nbsp;Inserir Saldo</a
           >
         </li>
         <li>
@@ -54,7 +54,7 @@
         </li>
         <li>
           <a href="{{url_for('logout')}}"
-            ><img src="img/person-fill.svg" />&nbsp;Sair</a
+            ><img src="img/x-lg.svg" />&nbsp;Sair</a
           >
         </li>
       </ul>
@@ -82,15 +82,15 @@
       </div>
 
       <div class="content">
-        {% with successo = get_flashed_messages(with_categories=true) %} {% if
-        successo %}
+        {% with successo = get_flashed_messages() %} 
+        {% if successo %}
         <ul id="messages" class="list-unstyled">
           {% for message in successo %}
           <li
             class="alert alert-success alert-dismissible fade show"
             role="alert"
           >
-            {{ sucesso }}
+            {{ message }}
             <button
               type="button"
               class="btn-close"
