@@ -1,10 +1,10 @@
 #from flaskext.mysql import MySQL
 from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
 
-from dao import UsuarioDao
+from dao import UsuarioDao, DespesasDao
 from flask_mysqldb import  MySQL
 
-from models import Usuario
+from models import Usuario, Despesas
 
 app = Flask(__name__)
 app.secret_key = 'engenharia'
@@ -16,10 +16,7 @@ app.config['MYSQL_DB'] = 'mf'
 app.config['MYSQL_PORT'] = 3306
 db = MySQL(app)
 usuario_dao = UsuarioDao(db)
-
-
-
-
+despesas_dao = DespesasDao(db)
 
 
 
@@ -111,16 +108,42 @@ def transacoes():
     return render_template('transacoes.html')
 
 #---------------------------------------------------------------
-@app.route('/poupanca')
-def poupanca():
-    return render_template('poupanca.html',titulo = "Insira seu saldo")
+#Saldo
+@app.route('/saldo')
+def saldo():
+    return render_template('Saldo.html',titulo = "Insira seu saldo")
 
+#Crud - create do saldo
+# @app.route('/salvarSaldo', methods=['POST',])
+# def salvarSaldo():
+#     # tipo = request.form['tipo']
+#     # valor = request.form['valor']
 
+#     saldo = Saldo(tipo,valor)
+#--------------------------------------------------
+
+#Despesas
+@app.route('/despesas/<int:id>')
+def despesas(id):
+    #código pra verificar se estar logado
+     if 'usuario_logado' not in session or session['usuario_logado']==None:
+        return redirect('/login?proxima=index')
+    #session['idcliente'] = id
+    return render_template('despesas.html', titulo = "Gerencie suas despesas")
+
+@app.route('/salvarDespesas', methods=['POST',])
+def salvarDespesas():
+    tipo = request.form['tipo']
+    valor = request.form['valor']
+    data = request.form['data']
+
+    despesas = Despesas(tipo,valor,data)
+    
+    despesas_dao.salvar(despesas)
+    return redirect('/despesas')
+#--------------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True)    
  
 
- #--------------------------------------------------------
-#  @app.route('/despesas')
-#  def despesas():
-#      #return render_template('despesas.html', titulo = "Faça seu gerenciamento de despesas")
+ 

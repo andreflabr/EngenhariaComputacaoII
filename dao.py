@@ -1,4 +1,4 @@
-from models import Usuario
+from models import Usuario, Despesas
 
 SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,sobrenome,email,senha) values (%s, %s, %s, %s)'
 SQL_DELETA_CLIENTE = 'DELETE from cliente where id=%s'
@@ -6,8 +6,8 @@ SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s,sobrenome=%s,usuario=%s,email
 SQL_USUARIO_POR_ID = 'SELECT idcliente,nome,sobrenome,email,senha from cliente where email=%s '
 SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
 #-----------------------------------------------------------------------------------------------------
-
-
+SQL_ATUALIZA_DESPESAS = ''
+SQL_CRIA_DESPESAS = 'INSERT into despesas (nome, valor,data) value (%s, %s, %s)'
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
@@ -46,6 +46,22 @@ class UsuarioDao:
         self.__db.connection.cursor().execute(SQL_DELETA_CLIENTE,(id,))
         self.__db.connection.commit()               
 
-           
+
+class DespesasDao:  
+    def __init__(self,db):
+        self.__db=db         
         
-          
+    def salvar(self,despesas):
+        cursor = self.__db.connection.cursor()
+
+        if(despesas._id):
+           
+            cursor.execute(SQL_ATUALIZA_DESPESAS,(despesas._tipo,despesas._valor, despesas._id))
+        else:
+            cursor.execute(SQL_CRIA_DESPESAS(despesas._tipo,despesas._valor))
+           
+            cursor._id = cursor.lastrowid
+
+        self.__db.connection.commit()
+        
+        return despesas

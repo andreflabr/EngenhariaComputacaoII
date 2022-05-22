@@ -3,3 +3,8 @@ $(document).ready(function () {
     alert("Seja bem vindo");
   });
 });
+
+
+$(document).ready(function(){
+  $('#valor').mask('R$ 00,00')
+});

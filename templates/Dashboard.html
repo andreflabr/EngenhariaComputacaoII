@@ -41,11 +41,14 @@
         </li>
         <li>
           <a href="{{url_for('transacoes')}}"
-            ><img src="img/arrow-up (1).svg"  />&nbsp;Transações</a
+            ><img src="img/arrow-up (1).svg" />&nbsp;Transações</a
           >
         </li>
         <li>
-          <a href="{{url_for('poupanca')}}"
+          <a href="{{url_for('despesas')}}"><img src="" />&nbsp;Despesas</a>
+        </li>
+        <li>
+          <a href="{{url_for('saldo')}}"
             ><img src="img/person-fill.svg" />&nbsp;Inserir Saldo</a
           >
         </li>
@@ -82,8 +85,7 @@
       </div>
 
       <div class="content">
-        {% with successo = get_flashed_messages() %} 
-        {% if successo %}
+        {% with successo = get_flashed_messages() %} {% if successo %}
         <ul id="messages" class="list-unstyled">
           {% for message in successo %}
           <li
