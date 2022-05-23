@@ -123,23 +123,29 @@ def saldo():
 #--------------------------------------------------
 
 #Despesas
-@app.route('/despesas/<int:id>')
-def despesas(id):
+@app.route('/despesas')
+
+
+def despesas():
     #código pra verificar se estar logado
-     if 'usuario_logado' not in session or session['usuario_logado']==None:
+    if 'usuario_logado' not in session or session['usuario_logado']==None:
         return redirect('/login?proxima=index')
-    #session['idcliente'] = id
+   
     return render_template('despesas.html', titulo = "Gerencie suas despesas")
 
 @app.route('/salvarDespesas', methods=['POST',])
 def salvarDespesas():
+    
     tipo = request.form['tipo']
     valor = request.form['valor']
     data = request.form['data']
+    
 
     despesas = Despesas(tipo,valor,data)
     
+    #print (despesas._tipo,despesas._valor,despesas._data)
     despesas_dao.salvar(despesas)
+    flash(' Despesa salva com sucesso!','sucesso')
     return redirect('/despesas')
 #--------------------------------------------------------
 if __name__ == '__main__':

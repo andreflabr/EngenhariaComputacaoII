@@ -79,20 +79,40 @@
               <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                   
                   <div class="card">
+                    {% with sucesso = get_flashed_messages() %} 
+                      {% if sucesso %}
+                      <ul id="sucesso" class="list-unstyled">
+                        <li
+                          class="alert alert-success alert-dismissible fade show"
+                          role="alert"
+                        >
+                          {{ sucesso }}
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                          ></button>
+                        </li>
+                      </ul>
+                      {% endif %} 
+                      {% endwith %}
                       <h2 class="text-center mb-2 preto">{{ titulo }}</h2>
                       <form class="form-card" method="POST" action="/salvarDespesas" >
                           <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
                                  <label  class="form-control-label px-3">Tipo<span class="text-danger"> *</span></label>
-                                  <input list="x" type="text" id="tipo" name="tipo"  placeholder="Fixa ou Extra">
-                                <datalist  id="x">
-                                  <option value="0">Passeio</option>
-                                  <option value="1">Conta de água</option>
-                                  <option value="2">Conta de luz</option>
-                                  <option value="3">Internet</option>
-                                  <option value="4">Feira do mês</option>
-                                  <option value="5">Outros...</option>
-                                </datalist>
+                                  <!-- <input list="x" type="text" id="tipo" name="tipo"  placeholder="Fixa ou Extra"> -->
+                                <select  id="tipo" name="tipo" style="height: 45px">
+                                  
+                                  <option value="1">Passeio</option>
+                                  <option value="2">Conta de água</option>
+                                  <option value="3">Conta de luz</option>
+                                  <option value="4">Internet</option>
+                                  <option value="5">Feira do mês</option>
+                                  
+                                  
+                                </select>
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex"> 

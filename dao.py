@@ -7,7 +7,7 @@ SQL_USUARIO_POR_ID = 'SELECT idcliente,nome,sobrenome,email,senha from cliente w
 SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
 #-----------------------------------------------------------------------------------------------------
 SQL_ATUALIZA_DESPESAS = ''
-SQL_CRIA_DESPESAS = 'INSERT into despesas (nome, valor,data) value (%s, %s, %s)'
+SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo) values (%s, %s, %s)'
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
@@ -56,9 +56,9 @@ class DespesasDao:
 
         if(despesas._id):
            
-            cursor.execute(SQL_ATUALIZA_DESPESAS,(despesas._tipo,despesas._valor, despesas._id))
+            cursor.execute(SQL_ATUALIZA_DESPESAS,(despesas._tipo,despesas._valor,despesas._data, despesas._id))
         else:
-            cursor.execute(SQL_CRIA_DESPESAS(despesas._tipo,despesas._valor))
+            cursor.execute(SQL_CRIA_DESPESAS,(despesas._valor,despesas._data,despesas._tipo))
            
             cursor._id = cursor.lastrowid
 

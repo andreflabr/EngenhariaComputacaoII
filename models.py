@@ -6,9 +6,11 @@ class Usuario:
         self._sobrenome=sobrenome
         self._email=email
         self._senha=senha
-        
+
+
+
 class Despesas:
-    def __init__(self,tipo,valor,data,id):
+    def __init__(self,tipo,valor,data,id=None):
         self._tipo = tipo
         self._valor = valor
         self._data = data
