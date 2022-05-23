@@ -6,5 +6,5 @@ $(document).ready(function () {
 
 
 $(document).ready(function(){
-  $('#valor').mask('R$ 00,00')
+  $('#valor').mask('R$  ')
 });

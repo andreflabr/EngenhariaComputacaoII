@@ -8,6 +8,8 @@ SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente w
 #-----------------------------------------------------------------------------------------------------
 SQL_ATUALIZA_DESPESAS = ''
 SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo) values (%s, %s, %s)'
+SQL_DELETA_DESPESAS = 'DELETE from despesas where iddespesas=%s'
+
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
