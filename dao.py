@@ -11,7 +11,7 @@ SQL_ATUALIZA_DESPESAS = ''
 SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo) values (%s, %s, %s)'
 SQL_DELETA_DESPESAS = 'DELETE from despesas where iddespesas=%s'
 SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET dta_  where iddespesas=%s '
-SQL_BUSCA_DESPESAS = 'SELECT  iddespesas, valor, dta_vencimento, tipo from despesas'
+SQL_BUSCA_DESPESAS = 'SELECT  iddespesas, valor, dta_vencimento, tipodesp_idtipo from despesas'
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
@@ -78,5 +78,6 @@ class DespesasDao:
 
 def traduz_despesas(despesas):
     def cria_despesas_com_tupla(tupla):
-        return(Despesas(tupla[1],tupla[2],tupla[3],tupla[0]))
+        print(tupla)
+        return(Despesas(tupla[3],tupla[1],tupla[2],tupla[0]))
     return list(map(cria_despesas_com_tupla,despesas))    

@@ -155,15 +155,15 @@
                 </tr>
               </thead>
               <tbody>
-                {{% for despesa in despesas %}}
+                {% for despesa in despesas %}
                 <tr>
-                  <td>{{% despesa._id %}}</td>
-                  <td>{{% despesa._valor %}}</td>
-                  <td>{{% despesa._data %}}</td>
-                  <td>{{% despesa._tipo % }</td>
+                  <td>{{ despesa._id }}</td>
+                  <td>{{ despesa._valor }}</td>
+                  <td>{{ despesa._data }}</td>
+                  <td>{{ despesa._tipo  }}</td>
                   <td><a href="#" class="btn"><img src="img/trash.svg" /></a>&nbsp;<a href="#" class="btn"><img src="img/pencil-square.svg" /></a></td>
                 </tr>
-                {{%endfor%}}
+                {%endfor%}
               </tbody>
               
             </table>

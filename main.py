@@ -21,6 +21,7 @@ despesas_dao = DespesasDao(db)
 
 
 @app.route('/')
+@app.route('/index')
 def index():
     lista = despesas_dao.listar()
     
