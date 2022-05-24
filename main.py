@@ -22,8 +22,9 @@ despesas_dao = DespesasDao(db)
 
 @app.route('/')
 def index():
+    lista = despesas_dao.listar()
     
-    return render_template('Dashboard.html')
+    return render_template('Dashboard.html',despesas = lista)
 
 
 

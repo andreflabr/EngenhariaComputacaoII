@@ -5,6 +5,18 @@ $(document).ready(function () {
 });
 
 
+// $(document).ready(function(){
+//   $('#valor').mask('R$  ')
+// });
+
 $(document).ready(function(){
-  $('#valor').mask('R$  ')
+  $('#sair').change(function(){
+    $('#sair').click(function(){
+      $('#sair').attr('href','http://127.0.0.1:5000/logout'); 
+      $('#sair').html('Sair');
+    });
+    
+     
+
+  });
 });

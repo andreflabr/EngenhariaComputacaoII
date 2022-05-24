@@ -1,3 +1,4 @@
+import re
 from models import Usuario, Despesas
 
 SQL_CRIA_CLIENTE = 'INSERT into cliente (nome,sobrenome,email,senha) values (%s, %s, %s, %s)'
@@ -9,7 +10,8 @@ SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente w
 SQL_ATUALIZA_DESPESAS = ''
 SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo) values (%s, %s, %s)'
 SQL_DELETA_DESPESAS = 'DELETE from despesas where iddespesas=%s'
-
+SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET dta_  where iddespesas=%s '
+SQL_BUSCA_DESPESAS = 'SELECT  iddespesas, valor, dta_vencimento, tipo from despesas'
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
@@ -67,3 +69,14 @@ class DespesasDao:
         self.__db.connection.commit()
         
         return despesas
+    
+    def listar(self):
+        cursor = self.__db.connection.cursor()
+        cursor.execute(SQL_BUSCA_DESPESAS)
+        despesas = traduz_despesas(cursor.fetchall())
+        return despesas
+
+def traduz_despesas(despesas):
+    def cria_despesas_com_tupla(tupla):
+        return(Despesas(tupla[1],tupla[2],tupla[3],tupla[0]))
+    return list(map(cria_despesas_com_tupla,despesas))    
