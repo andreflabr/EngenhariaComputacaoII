@@ -75,6 +75,10 @@ class DespesasDao:
         cursor.execute(SQL_BUSCA_DESPESAS)
         despesas = traduz_despesas(cursor.fetchall())
         return despesas
+    
+    def deletar(self, id):
+        self.__db.connection.cursor().execute(SQL_DELETA_DESPESAS,(id,))
+        self.__db.connection.commit()    
 
 def traduz_despesas(despesas):
     def cria_despesas_com_tupla(tupla):

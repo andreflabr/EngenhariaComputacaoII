@@ -1,5 +1,6 @@
 #from flaskext.mysql import MySQL
 from flask import Flask, render_template, request, redirect, flash, session, send_from_directory
+from markupsafe import re
 
 from dao import UsuarioDao, DespesasDao
 from flask_mysqldb import  MySQL
@@ -149,6 +150,11 @@ def salvarDespesas():
     despesas_dao.salvar(despesas)
     flash(' Despesa salva com sucesso!','sucesso')
     return redirect('/despesas')
+
+@app.route('/deletar/<int:id>')
+def deletar(id):
+    despesas_dao.deletar(id)
+    return redirect('/')
 #--------------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True)    
