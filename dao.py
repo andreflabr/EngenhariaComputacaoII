@@ -12,6 +12,7 @@ SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo
 SQL_DELETA_DESPESAS = 'DELETE from despesas where iddespesas=%s'
 SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET dta_  where iddespesas=%s '
 SQL_BUSCA_DESPESAS = 'SELECT  iddespesas, valor, dta_vencimento, tipodesp_idtipo from despesas'
+SQL_DESPESAS_POR_ID = 'SELECT  iddespesas, valor, dta_vencimento, tipodesp_idtipo from despesas where iddespesas=%s'
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
@@ -76,6 +77,12 @@ class DespesasDao:
         despesas = traduz_despesas(cursor.fetchall())
         return despesas
     
+    def busca_por_id(self,id):
+        cursor = self.__db.connection.cursor()
+        cursor.execute(SQL_DESPESAS_POR_ID,(id,))
+        tupla = cursor.fetchone()
+        return Despesas(tupla[1], tupla[2], tupla[3] , id= tupla[0])
+
     def deletar(self, id):
         self.__db.connection.cursor().execute(SQL_DELETA_DESPESAS,(id,))
         self.__db.connection.commit()    

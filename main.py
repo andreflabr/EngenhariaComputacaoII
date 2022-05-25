@@ -143,7 +143,6 @@ def salvarDespesas():
     valor = request.form['valor']
     data = request.form['data']
     
-
     despesas = Despesas(tipo,valor,data)
     
     #print (despesas._tipo,despesas._valor,despesas._data)
@@ -151,10 +150,34 @@ def salvarDespesas():
     flash(' Despesa salva com sucesso!','sucesso')
     return redirect('/despesas')
 
+#deletar
 @app.route('/deletar/<int:id>')
 def deletar(id):
     despesas_dao.deletar(id)
     return redirect('/')
+
+#update
+@app.route('/editar/<int:id>')
+def editar(id):
+    if 'usuario_logado' not in session or session['usuario_logado']==None:
+        return redirect('/login?proxima=editar')
+    lista = despesas_dao.busca_por_id(id)    
+    return render_template('editarDespesas.html', titulo = 'Editar despesas!',despesas = lista)  
+    
+@app.route('/editarDespesas', methods=['POST',])
+def atualizar():
+    
+    tipo = request.form['tipo']
+    valor = request.form['valor']
+    data = request.form['data']
+    
+    despesas = Despesas(tipo,valor,data)
+    
+    #print (despesas._tipo,despesas._valor,despesas._data)
+    despesas_dao.editar(despesas)
+    flash(' Despesa salva com sucesso!','sucesso')
+    return redirect('/')      
+
 #--------------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True)    
