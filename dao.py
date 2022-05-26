@@ -10,9 +10,9 @@ SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente w
 SQL_ATUALIZA_DESPESAS = ''
 SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo) values (%s, %s, %s)'
 SQL_DELETA_DESPESAS = 'DELETE from despesas where iddespesas=%s'
-SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET dta_  where iddespesas=%s '
+SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET valor = %s, dta_vencimento = %s,tipodesp_idtipo = %s  where iddespesas=%s '
 SQL_BUSCA_DESPESAS = 'SELECT  iddespesas, valor, dta_vencimento, tipodesp_idtipo from despesas'
-SQL_DESPESAS_POR_ID = 'SELECT  iddespesas, valor, dta_vencimento, tipodesp_idtipo from despesas where iddespesas=%s'
+SQL_DESPESAS_POR_ID = 'SELECT  valor, dta_vencimento,tipodesp_idtipo from despesas where iddespesas=%s'
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
@@ -61,7 +61,7 @@ class DespesasDao:
 
         if(despesas._id):
            
-            cursor.execute(SQL_ATUALIZA_DESPESAS,(despesas._tipo,despesas._valor,despesas._data, despesas._id))
+            cursor.execute(SQL_ATUALIZA_DESPESAS,(despesas._valor,despesas._data,despesas._tipo, despesas._id))
         else:
             cursor.execute(SQL_CRIA_DESPESAS,(despesas._valor,despesas._data,despesas._tipo))
            
@@ -81,6 +81,7 @@ class DespesasDao:
         cursor = self.__db.connection.cursor()
         cursor.execute(SQL_DESPESAS_POR_ID,(id,))
         tupla = cursor.fetchone()
+        print(tupla)
         return Despesas(tupla[1], tupla[2], tupla[3] , id= tupla[0])
 
     def deletar(self, id):

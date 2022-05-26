@@ -14,7 +14,7 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'mf'
-app.config['MYSQL_PORT'] = 3307
+app.config['MYSQL_PORT'] = 3306
 db = MySQL(app)
 usuario_dao = UsuarioDao(db)
 despesas_dao = DespesasDao(db)
@@ -170,12 +170,11 @@ def atualizar():
     tipo = request.form['tipo']
     valor = request.form['valor']
     data = request.form['data']
+    id = request.form['id']
+    despesas = Despesas(tipo,valor,data,id)
     
-    despesas = Despesas(tipo,valor,data)
-    
-    #print (despesas._tipo,despesas._valor,despesas._data)
-    despesas_dao.editar(despesas)
-    flash(' Despesa salva com sucesso!','sucesso')
+    despesas_dao.salvar(despesas)
+    flash(' Despesa atualizada com sucesso!','sucesso')
     return redirect('/')      
 
 #--------------------------------------------------------
