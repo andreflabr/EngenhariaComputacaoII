@@ -76,14 +76,14 @@ class DespesasDao:
         cursor.execute(SQL_BUSCA_DESPESAS)
         despesas = traduz_despesas(cursor.fetchall())
         return despesas
-    
+    #--------------------------------------------------
     def busca_por_id(self,id):
         cursor = self.__db.connection.cursor()
         cursor.execute(SQL_DESPESAS_POR_ID,(id,))
         tupla = cursor.fetchone()
         print(tupla)
         return Despesas(tupla[1], tupla[2], tupla[3] , id= tupla[0])
-
+    #--------------------------------------------------
     def deletar(self, id):
         self.__db.connection.cursor().execute(SQL_DELETA_DESPESAS,(id,))
         self.__db.connection.commit()    

@@ -95,12 +95,13 @@
                       {% endwith %}
                       <h2 class="text-center mb-2 preto">{{ titulo }}</h2>
                       <form class="form-card" method="POST" action="/editarDespesas" >
+                         {% for despesa in despesas %}
                         <input type="hidden" name="id" value="{{despesa._id}}" />
                           <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
                                  <label  class="form-control-label px-3">Tipo<span class="text-danger"> *</span></label>
                                   <!-- <input list="x" type="text" id="tipo" name="tipo"  placeholder="Fixa ou Extra"> -->
-                                <select  id="tipo" name="tipo" style="height: 45px" value="{{despesa._valor}}">
+                                <select  id="tipo" name="tipo" style="height: 45px" value="{{despesa._tipo}}">
                                   
                                   <option value="1">Passeio</option>
                                   <option value="2">Conta de água</option>
@@ -123,7 +124,7 @@
                                 <label class="form-control-label px-3">Data de pagamento<span class="text-danger"> *</span></label> 
                                 <input type="date" id="data" name="data"  placeholder="Data de pagamento" value="{{despesa._data}}"> </div>
                          <div class="row justify-content-between text-left">
-                            
+                            {%endfor%}
                                 <div class="form-group col-sm-6 flex-column d-flex">
                                                                           
                                   <button class="btn btn-red">
