@@ -95,13 +95,13 @@
                       {% endwith %}
                       <h2 class="text-center mb-2 preto">{{ titulo }}</h2>
                       <form class="form-card" method="POST" action="/editarDespesas" >
-                         {% for despesa in despesas %}
-                        <input type="hidden" name="id" value="{{despesa._id}}" />
+                         
+                        <input type="hidden" name="id" value="{{despesas._id}}" />
                           <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex">
                                  <label  class="form-control-label px-3">Tipo<span class="text-danger"> *</span></label>
                                   <!-- <input list="x" type="text" id="tipo" name="tipo"  placeholder="Fixa ou Extra"> -->
-                                <select  id="tipo" name="tipo" style="height: 45px" value="{{despesa._tipo}}">
+                                <select  id="tipo" name="tipo" style="height: 45px" value="{{despesas._tipo}}">
                                   
                                   <option value="1">Passeio</option>
                                   <option value="2">Conta de água</option>
@@ -117,14 +117,14 @@
 
                             <div class="form-group col-sm-6 flex-column d-flex"> 
                                 <label class="form-control-label px-3">Valor<span class="text-danger"> *</span></label> 
-                                <input type="text" id="valor" name="valor"  placeholder="Digite um valor" value="{{despesa._valor}}"> </div>
+                                <input type="text" id="valor" name="valor"  placeholder="Digite um valor" value="{{despesas._valor}}"> </div>
                         </div>
                         
                         <div class="form-group col-sm-6 flex-column d-flex"> 
                                 <label class="form-control-label px-3">Data de pagamento<span class="text-danger"> *</span></label> 
-                                <input type="date" id="data" name="data"  placeholder="Data de pagamento" value="{{despesa._data}}"> </div>
+                                <input type="date" id="data" name="data"  placeholder="Data de pagamento" value="{{despesas._data}}"> </div>
                          <div class="row justify-content-between text-left">
-                            {%endfor%}
+                            
                                 <div class="form-group col-sm-6 flex-column d-flex">
                                                                           
                                   <button class="btn btn-red">
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="form-group col-sm-6 flex-column d-flex"> 
                                       <button class="btn btn-green">
-                                      <i class="bi bi-check"></i> Criar
+                                      <i class="bi bi-check"></i> Atualizar
                                   </button>
                                   </div>
                      </form>

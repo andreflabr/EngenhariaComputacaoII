@@ -12,7 +12,7 @@ SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo
 SQL_DELETA_DESPESAS = 'DELETE from despesas where iddespesas=%s'
 SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET valor = %s, dta_vencimento = %s,tipodesp_idtipo = %s  where iddespesas=%s '
 SQL_BUSCA_DESPESAS = 'SELECT  iddespesas, valor, dta_vencimento, tipodesp_idtipo from despesas'
-SQL_DESPESAS_POR_ID = 'SELECT  valor, dta_vencimento,tipodesp_idtipo from despesas where iddespesas=%s'
+SQL_DESPESAS_POR_ID = 'SELECT  iddespesas, valor, dta_vencimento,tipodesp_idtipo from despesas where iddespesas=%s'
 
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
