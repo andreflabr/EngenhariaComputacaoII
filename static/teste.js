@@ -1,16 +1,36 @@
-// $(document).ready(function () {
-//   $("#botao").click(function () {
-//     alert("Seja bem vindo");
-//   });
-// });
-
 $(document).ready(function () {
-  $("#valor").mask("R$ 00,00");
+  $("#name").mask();
+  $("#valor").mask("999.999.990.00", { reverse: true });
 });
 
+// validação de usuario
 $(document).ready(function () {
-  $("#sair").click(function () {
-    $("#sair").attr("disabled", true);
-    $("#sair").text("Sair");
+  $("#usuarioNovo").validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 3,
+      },
+      lastname: {
+        required: true,
+        minlength: 3,
+      },
+      email: {
+        required: true,
+        email: true,
+      },
+    },
+  });
+});
+
+// validação de login
+$(document).ready(function () {
+  $("#login").validate({
+    rules: {
+      usuario: {
+        required: true,
+        email: true,
+      },
+    },
   });
 });

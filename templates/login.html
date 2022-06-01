@@ -32,6 +32,10 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src="{{ url_for('static', filename='jquery-3.6.0.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery.validate.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='localization/messages_pt_BR.js') }}"></script>
+    <script src="{{ url_for('static', filename='teste.js') }}"></script>
   </head>
   <body>
     <div class="container">
@@ -63,7 +67,7 @@
 
         <p id="profile-name" class="profile-name-card"></p>
 
-        <form class="form-signin" method="post" action="/autenticar">
+        <form class="form-signin" method="post" action="/autenticar" id="login">
           <input type="hidden" name="proxima" value="{{proxima}}" />
           <span id="reauth-email" class="reauth-email"></span>
           <input
