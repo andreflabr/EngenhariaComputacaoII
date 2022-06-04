@@ -50,7 +50,7 @@ def autenticar():
     usuario=usuario_dao.busca_por_id(request.form['usuario'])
     if usuario: 
         if usuario._senha == request.form['senha']:
-            session['usuario_logado']=request.form['usuario']            
+            session['usuario_logado']= request.form['usuario']            
             session['cliente_id'] = usuario._id           
             flash(request.form['usuario'] + ' logado com sucesso!','sucesso')
             proxima_pagina = request.form['proxima']
@@ -144,12 +144,11 @@ def salvarDespesas():
     tipo = request.form['tipo']
     valor = request.form['valor']
     data = request.form['data']
-    clienteId = session['cliente_id']
-    print(clienteId)
-    
-    #despesas = Despesas(tipo,valor,data,clienteId)   
+    clienteId = session['cliente_id']    
+
+    despesas = Despesas(tipo,valor,data,clienteId)   
     #print (despesas._tipo,despesas._valor,despesas._data)
-    #despesas_dao.salvar(despesas)
+    despesas_dao.salvar(despesas)
     flash(' Despesa salva com sucesso!','sucesso')
     return redirect('/despesas')
 
