@@ -6,14 +6,19 @@ SQL_DELETA_CLIENTE = 'DELETE from cliente where id=%s'
 SQL_ATUALIZA_CLIENTE = 'UPDATE cliente SET nome=%s,sobrenome=%s,usuario=%s,email=%s, senha=%s where id=%s '
 SQL_USUARIO_POR_ID = 'SELECT idcliente,nome,sobrenome,email,senha from cliente where email=%s '
 SQL_BUSCA_CLIENTE = 'SELECT id,nome,sobrenome,usuario,email,senha from cliente where id=%s '
-#-----------------------------------------------------------------------------------------------------
-SQL_ATUALIZA_DESPESAS = ''
-SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,tipodesp_idtipo) values (%s, %s, %s)'
+
+#-----------------------------------------------------------------------------------------------------------------------------
+
+SQL_CRIA_DESPESAS = 'INSERT into despesas (valor, dta_vencimento,cliente_idcliente,tipodesp_idtipo) values (%s, %s, %s, %s)'
 SQL_DELETA_DESPESAS = 'DELETE from despesas where iddespesas=%s'
-SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET valor = %s, dta_vencimento = %s,tipodesp_idtipo = %s  where iddespesas=%s '
+SQL_ATUALIZA_DESPESAS = 'UPDATE despesas SET valor = %s, dta_vencimento = %s,tipodesp_idtipo = %s, cliente_idcliente=%s  where iddespesas=%s '
 SQL_BUSCA_DESPESAS = 'SELECT  iddespesas, valor, dta_vencimento, tipodesp_idtipo from despesas'
 SQL_DESPESAS_POR_ID = 'SELECT  iddespesas, valor, dta_vencimento,tipodesp_idtipo from despesas where iddespesas=%s'
 
+#-----------------------------------------------------------------------------------------------------------------------------
+
+SQL_ATUALIZA_ENTRADAS = 'UPDATE entradas SET valor_entrada = %s, dta_entrada = %s,tipoentrada_idtipo = %s  where identradas=%s '
+SQL_CRIA_ENTRADAS = 'INSERT into entradas (valor_entrada, dta_entrada,tipoentrada_idtipo) values (%s, %s, %s)'
 def traduz_usuario(tupla):    
    # return Usuario(tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[0])
    return Usuario(tupla[1],tupla[2],tupla[3],tupla[4], tupla[0])
@@ -53,6 +58,7 @@ class UsuarioDao:
 
 
 class DespesasDao:  
+
     def __init__(self,db):
         self.__db=db         
         
@@ -61,9 +67,9 @@ class DespesasDao:
 
         if(despesas._id):
            
-            cursor.execute(SQL_ATUALIZA_DESPESAS,(despesas._valor,despesas._data,despesas._tipo, despesas._id))
+            cursor.execute(SQL_ATUALIZA_DESPESAS,(despesas._valor,despesas._data,despesas._clienteId,despesas._tipo, despesas._id))
         else:
-            cursor.execute(SQL_CRIA_DESPESAS,(despesas._valor,despesas._data,despesas._tipo))
+            cursor.execute(SQL_CRIA_DESPESAS,(despesas._valor,despesas._data,despesas._clienteId,despesas._tipo))
            
             cursor._id = cursor.lastrowid
 
@@ -91,5 +97,25 @@ class DespesasDao:
 def traduz_despesas(despesas):
     def cria_despesas_com_tupla(tupla):
         print(tupla)
-        return(Despesas(tupla[3],tupla[1],tupla[2],tupla[0]))
+        return(Despesas(tupla[3],tupla[1],tupla[2],None,tupla[0]))
     return list(map(cria_despesas_com_tupla,despesas))    
+
+
+class EntradaDao:
+    def __init__(self,db):
+        self.__db=db
+
+    def salvar(self,entrada):
+        cursor = self.__db.connection.cursor()
+
+        if(entrada._id):
+           
+            cursor.execute(SQL_ATUALIZA_ENTRADAS,(entrada._valor_entrada,entrada._data_entrada,entrada._tipo_entrada, entrada._id))
+        else:
+            cursor.execute(SQL_CRIA_ENTRADAS,(entrada._valor_entrada,entrada._data_entrada,entrada._tipo_entrada))
+           
+            cursor._id = cursor.lastrowid
+
+        self.__db.connection.commit()
+        
+        return entrada
