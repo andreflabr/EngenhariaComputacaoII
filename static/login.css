@@ -43,12 +43,13 @@ body{
 .btn{
     font-size: 30px;
     background-color: #406564;
-    padding: 15px 25px 15px 25px;
+    padding: 10px 85px 10px 85px;
     border-radius: 50px;
     border: none;
     color: white;
     justify-content: center;
     align-items: center;
+    margin-top: 80px;
 }
 
 .btn:hover{
@@ -94,7 +95,7 @@ body{
     border: none;
     padding: 5px;
     width: 400px;
-    margin-bottom: 80px;
+    /* margin-bottom: 80px; */
 }
 
 h3{
