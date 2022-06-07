@@ -18,13 +18,13 @@
   <script src="{{ url_for('static', filename='jquery-3.6.0.js') }}"></script>
   <script src="{{ url_for('static', filename='jquery.validate.min.js') }}"></script>
   <script src="{{ url_for('static', filename='localization/messages_pt_BR.js') }}"></script>
-  <script src="{{ url_for('static', filename='teste.js') }}"></script> 
+  <script src="{{ url_for('static', filename='teste.js') }}"></script>
 </head>
 
 <body>
   <div class="container">
     <div class="mensagens">
-      <!-- {% with error = get_flashed_messages() %}
+      {% with error = get_flashed_messages() %}
       {% if error %}
       <ul id="error" class="list-unstyled">
         <li class="alert alert-success alert-dismissible fade show" role="alert">
@@ -32,7 +32,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </li>
       </ul>
-      {% endif %} {% endwith %} -->
+      {% endif %} {% endwith %}
       <h3>Faça seu login</h3>
     </div>
 
@@ -47,10 +47,11 @@
       <input type="text" id="inputEmail" name="usuario" class="form-control" placeholder="Digite seu email" required
         autofocus />
       <input type="password" id="inputPassword" name="senha" class="form-control" placeholder="Senha" required />
-      <button data-bs-toggle="modal" class="btn" type="submit" id="botao">
+
+    </form>      
+    <button data-bs-toggle="modal" class="btn" type="submit" id="botao">
         Entrar
       </button>
-    </form>
     <a href="{{url_for('registro')}}" id="sombra3">Não possuo cadastro</a>
   </div>
 

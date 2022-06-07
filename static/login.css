@@ -37,6 +37,7 @@ body{
     width: 400px;
     text-align: center;
     justify-content: center;
+    margin-bottom: 80px;
 }
 
 .btn{
@@ -48,7 +49,6 @@ body{
     color: white;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
 }
 
 .btn:hover{
@@ -82,6 +82,7 @@ body{
     border: none;
     color: #406564;
     padding: 5px;
+    width: 400px;
 }
 
 #inputPassword{
@@ -89,9 +90,10 @@ body{
     color: #406564;
     font-size: 30px;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 30px;
     border: none;
     padding: 5px;
+    width: 400px;
 }
 
 h3{
