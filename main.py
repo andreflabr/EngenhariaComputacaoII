@@ -12,7 +12,7 @@ app.secret_key = 'engenharia'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = '123456'
 app.config['MYSQL_DB'] = 'mf'
 app.config['MYSQL_PORT'] = 3306
 db = MySQL(app)
@@ -172,8 +172,9 @@ def atualizar():
     tipo = request.form['tipo']
     valor = request.form['valor']
     data = request.form['data']
+    clienteId = session['cliente_id']
     id = request.form['id']
-    despesas = Despesas(tipo,valor,data,id)
+    despesas = Despesas(tipo,valor,data,clienteId,id)
     
     despesas_dao.salvar(despesas)
     flash(' Despesa atualizada com sucesso!','sucesso')
