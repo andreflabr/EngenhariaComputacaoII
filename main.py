@@ -172,8 +172,9 @@ def atualizar():
     tipo = request.form['tipo']
     valor = request.form['valor']
     data = request.form['data']
+    clienteId = session['cliente_id']
     id = request.form['id']
-    despesas = Despesas(tipo,valor,data,id)
+    despesas = Despesas(tipo,valor,data,clienteId,id)
     
     despesas_dao.salvar(despesas)
     flash(' Despesa atualizada com sucesso!','sucesso')
