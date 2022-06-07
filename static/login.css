@@ -37,7 +37,7 @@ body{
     width: 400px;
     text-align: center;
     justify-content: center;
-    margin-bottom: 80px;
+    /* margin-bottom: 20px; */
 }
 
 .btn{
