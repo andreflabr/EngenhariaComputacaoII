@@ -1,43 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 *{
     box-sizing: border-box;
 }
 body{
     margin: 0;
-}
-
-body{
+    font-family: 'Roboto', sans-serif;
     background-color: #5E807F;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
+
 #profile-img{
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 100px;
 }
-
 
 .container{
     display: flex;
     flex-flow: column wrap;
-    height: 1200px;
+    height: 1350px;
+    width: 600px;
     background-color: #C4C4C4;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: auto;
+    margin-right: auto;
     flex: 40%;
     border-left: 25px solid #406564;
     border-right: 25px solid #406564;
     align-items: center;
-    padding: 35px 40px 35px 40px;
+    padding: 0px 40px 35px 40px;
 }
 
 .form-signin{
-    margin-top: 30px;
     width: 400px;
     text-align: center;
     justify-content: center;
-    /* margin-bottom: 20px; */
 }
 
 .btn{
@@ -49,7 +48,7 @@ body{
     color: white;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 .btn:hover{
@@ -59,6 +58,11 @@ body{
     cursor: pointer;
 }
 
+.cadastro{
+    text-align: center;
+    margin-top: 20px;
+}
+
 #sombra3{
     color: #406564;
     text-align: center;
@@ -66,6 +70,7 @@ body{
     margin-top: 20px;
     padding: 5px 10px 5px 10px;
 }
+
 #sombra3:hover{
     color: white;
     background-color: #406564;
@@ -95,7 +100,6 @@ body{
     border: none;
     padding: 5px;
     width: 400px;
-    /* margin-bottom: 80px; */
 }
 
 h3{
@@ -103,9 +107,13 @@ h3{
     color: #406564;
 }
 
-@media screen and (max-width: 1350px){
+
+/* 
+@media screen and (max-width: 1024px){
     body{
         background-color: #C4C4C4;
+        overflow-y:scroll ;
+        overflow-x:scroll ;
     }
     .container{
         background-color: #C4C4C4;
@@ -115,3 +123,4 @@ h3{
     }
 }
 
+ */

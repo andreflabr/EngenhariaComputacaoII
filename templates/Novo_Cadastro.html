@@ -1,52 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Não possuo cadastro</title>
-    <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='novo-cadastro.css') }}"
-  />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Não possuo cadastro</title>
+
     
-
-    <!-- CSS only
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="static/style.css" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='novo-cadastro.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='dashboard.css') }}"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css"
-    />
-
-    JavaScript Bundle with Popper
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='novo-cadastro.css') }}" />
     <script src="{{ url_for('static', filename='jquery-3.6.0.js') }}"></script>
     <script src="{{ url_for('static', filename='jquery.validate.min.js') }}"></script>
     <script src="{{ url_for('static', filename='localization/messages_pt_BR.js') }}"></script>
-    <script src="{{ url_for('static', filename='teste.js') }}"></script> -->
-  </head>
+    <script src="{{ url_for('static', filename='teste.js') }}"></script>
+</head>
 
-  <body>
-    <!-- <div class="side-menu">
+<body>
+  <div class="container" id="form-container">
+      <div class="form-container">
+        
+        <h3>Faça seu cadastro</h3>
+
+
+        <form class="form" method="POST" action="/salvarUsuario" name="usuarioNovo" id="usuarioNovo">
+          <input type="hidden" name="proxima2" value="{{proxima2}}" />
+          <span id="reauth-email" class="reauth-email"></span>
+
+
+          <div class="name">
+            <label for="name" class="form-label"></label>
+            <input type="text" id="name" name="name" autocomplete="off" class="form-control" placeholder="Digite seu nome"/>
+          </div>
+
+
+          <div class="sobrenome">
+            <label for="lastname" class="form-label"></label>
+            <input type="text" id="lastname" name="lastname" autocomplete="off" class="form-control" placeholder="Digite seu sobrenome" />
+          </div>
+
+
+          <div class="email">
+            <label for="email" class="form-label"></label>
+            <input type="email" class="form-control" id="email" autocomplete="off" name="email" placeholder="Digite seu email" />
+          </div>
+
+
+          <div class="senha">
+            <label for="password" class="form-label"></label>
+            <input type="password" class="form-control" id="password" autocomplete="off" name="password" placeholder="Digite sua senha" />
+          </div>
+
+
+          <button class="btn" type="submit">
+            Cadastrar
+          </button>
+
+
+          <a class="sombra3" href="{{url_for('login')}}" id="sombra3">Eu já tenho uma conta</a>
+        </form>
+      </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+<!-- <div class="side-menu">
       <div class="brand-name">
         <h1>Finanças S.A</h1>
       </div>
@@ -76,46 +97,7 @@
       </ul>
     </div> -->
 
-    <div class="container" id="form-container">
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Faça seu cadastro</h3>
-
-          <form
-            class="form-signin"
-            method="POST"
-            action="/salvarUsuario"
-            name="usuarioNovo"
-            id="usuarioNovo"
-          >
-            <input type="hidden" name="proxima2" value="{{proxima2}}" />
-            <span id="reauth-email" class="reauth-email"></span>
-            <div class="form-floating mb-3">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                class="form-control"
-                autofocus
-              />
-              <label for="name" class="form-label">Digite seu nome</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input
-                type="text"
-                id="lastname"
-                name="lastname"
-                class="form-control"
-                placeholder="Digite seu sobrenome"
-                required
-              />
-              <label for="lastname" class="form-label"
-                >Digite seu sobrenome</label
-              >
-            </div>
-
-            <!-- <div class="form-floating mb-3">
+<!-- <div class="form-floating mb-3">
               <input
                 type="text"
                 id="username"
@@ -129,45 +111,13 @@
               >
             </div> -->
 
-            <div class="form-floating mb-3">
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="Digite seu email"
-              />
-              <label for="email" class="form-label">Digite seu email</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                name="password"
-                placeholder="Digite sua senha"
-              />
-              <label for="password" class="form-label">Digite sua senha</label>
-            </div>
-
-            <button
-              class="btn btn-lg btn-primary btn-block btn-signin"
-              type="submit"
-            >
-              Cadastrar
-            </button>
-            <a class="btn btn-danger" href="{{url_for('login')}}" id="sombra"
-              >Eu já tenho uma conta</a
-            >
-
-            <!--<div class="col-12" id="link-container">
+<!--<div class="col-12" id="link-container">
               <a class="link-prumary" href="{{url_for('login')}}"
                 >Eu já tenho uma conta</a
               >
             </div>-->
-          </form>
-        </div>
-        <!-- <div class="col-md-6">
+
+<!-- <div class="col-md-6">
           <div class="row align-items-center">
             <div class="col-12">
               <img
@@ -183,7 +133,3 @@
             </div>
           </div>
         </div> -->
-      </div>
-    </div>
-  </body>
-</html>

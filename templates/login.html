@@ -45,14 +45,16 @@
       <input type="hidden" name="proxima" value="{{proxima}}" />
       <span id="reauth-email" class="reauth-email"></span>
       <input type="text" id="inputEmail" name="usuario" class="form-control" placeholder="Digite seu email" required
-        autofocus />
+        autofocus autocomplete="off"/>
       <input type="password" id="inputPassword" name="senha" class="form-control" placeholder="Senha" required />
       <button data-bs-toggle="modal" class="btn" type="submit" id="botao">
         Entrar
       </button>
     </form>      
 
-    <a href="{{url_for('registro')}}" id="sombra3">Não possuo cadastro</a>
+    <div class="cadastro">
+      <a href="{{url_for('registro')}}" id="sombra3">Não possuo cadastro</a>
+    </div>
   </div>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='jquery-3.6.0.js') }}" />
