@@ -92,6 +92,7 @@ td {
   flex-flow: column wrap;
   text-align:left;
   z-index: 999;
+  text-decoration: none;
 }
 
 .side-menu .brand-name {
@@ -108,6 +109,7 @@ td {
   display: flex;
   align-items:flex-start;
   padding-top: 15px;
+  text-decoration: none;
 
 }
 
